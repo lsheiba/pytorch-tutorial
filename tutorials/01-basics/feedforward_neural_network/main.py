@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.autograd import Variable
+import os
 
 
 # Hyper Parameters 
@@ -14,12 +15,12 @@ batch_size = 100
 learning_rate = 0.001
 
 # MNIST Dataset 
-train_dataset = dsets.MNIST(root='./data', 
+train_dataset = dsets.MNIST(root=os.environ['DATA_DIR'], 
                             train=True, 
                             transform=transforms.ToTensor(),  
                             download=True)
 
-test_dataset = dsets.MNIST(root='./data', 
+test_dataset = dsets.MNIST(root=os.environ['DATA_DIR'], 
                            train=False, 
                            transform=transforms.ToTensor())
 
