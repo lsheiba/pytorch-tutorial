@@ -6,6 +6,7 @@ from torchvision import datasets
 from torchvision import transforms
 from torchvision.utils import save_image
 from torch.autograd import Variable
+import os
 
 
 def to_var(x):
@@ -23,7 +24,7 @@ transform = transforms.Compose([
                 transforms.Normalize(mean=(0.5, 0.5, 0.5), 
                                      std=(0.5, 0.5, 0.5))])
 # MNIST dataset
-mnist = datasets.MNIST(root='./data/',
+mnist = datasets.MNIST(root=os.environ['DATA_DIR'],
                        train=True,
                        transform=transform,
                        download=True)
@@ -115,11 +116,11 @@ for epoch in range(200):
     # Save real images
     if (epoch+1) == 1:
         images = images.view(images.size(0), 1, 28, 28)
-        save_image(denorm(images.data), './data/real_images.png')
+        save_image(denorm(images.data), os.environ['DATA_DIR']+os.sep+'real_images.png')
     
     # Save sampled images
     fake_images = fake_images.view(fake_images.size(0), 1, 28, 28)
-    save_image(denorm(fake_images.data), './data/fake_images-%d.png' %(epoch+1))
+    save_image(denorm(fake_images.data), os.environ['DATA_DIR']+os.sep+'fake_images-%d.png' %(epoch+1))
 
 # Save the trained parameters 
 torch.save(G.state_dict(), './generator.pkl')
