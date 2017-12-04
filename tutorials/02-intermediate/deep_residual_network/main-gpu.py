@@ -7,6 +7,7 @@ import torch.nn as nn
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.autograd import Variable
+import os
 
 # Image Preprocessing 
 transform = transforms.Compose([
@@ -16,12 +17,12 @@ transform = transforms.Compose([
     transforms.ToTensor()])
 
 # CIFAR-10 Dataset
-train_dataset = dsets.CIFAR10(root='./data/',
+train_dataset = dsets.CIFAR10(root=os.environ['DATA_DIR'],
                                train=True, 
                                transform=transform,
                                download=True)
 
-test_dataset = dsets.CIFAR10(root='./data/',
+test_dataset = dsets.CIFAR10(root=os.environ['DATA_DIR'],
                               train=False, 
                               transform=transforms.ToTensor())
 
