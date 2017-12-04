@@ -33,17 +33,6 @@ This repository provides tutorial code for deep learning researchers to learn [P
 * [TensorBoard in PyTorch](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/04-utils/tensorboard)
 
 
-
-<br/>
-
-## Getting Started
-```bash
-$ git clone https://github.com/yunjey/pytorch-tutorial.git
-$ cd pytorch-tutorial/tutorials/project_path
-$ python main.py               # cpu version
-$ python main-gpu.py           # gpu version
-```
-
 <br/>
 
 ## Dependencies
