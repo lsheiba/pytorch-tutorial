@@ -6,6 +6,7 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
 from torch.autograd import Variable
+import os
 
 
 #========================== Table of Contents ==========================#
@@ -85,7 +86,7 @@ c = b.numpy()                # convert torch tensor to numpy array
 
 #===================== Implementing the input pipline =====================#
 # Download and construct dataset.
-train_dataset = dsets.CIFAR10(root='../data/',
+train_dataset = dsets.CIFAR10(root=os.environ['DATA_DIR'],
                                train=True, 
                                transform=transforms.ToTensor(),
                                download=True)
